@@ -56,7 +56,7 @@ Currently, we pushed our experiment result data to the repository. It is located
 * We do not push the experiment results of Universe 7 and Universe 8 to this repository due to file size limit of the GitHub. We will distribute when requested by email (<dslwde@gmail.com>)
 
 ## Paper
-My paper is at https://arxiv.org/abs/2503.13544 <br>
+Our paper is at <br>
 Citation: <br>
 ```
 
