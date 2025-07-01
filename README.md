@@ -28,6 +28,7 @@ CUDA_VISIBLE_DEVICES=<GPU Number> python experiment.py -u <Universe> -p <Portfol
 <Model> can be LSTM, Transformer, or Mamba.
 -z sophia sets the optimizer to Sophia.
 
+
 ## Deep Ensemble experiment
 To run the Deep Ensemble experiments and analyze performance under varying ensemble sizes, use:
 
@@ -36,8 +37,23 @@ CUDA_VISIBLE_DEVICES=<GPU_Number> python experiment_ensemble.py -u <Universe> -p
 ```
 Here, -r 1000 denotes the number of model samples to generate for the ensemble.
 
+
 ## Analysis
 The notebooks portfolio.ipynb, backtest.ipynb, and ensemble.ipynb contain scripts and visualizations for analyzing the experiment results.
+
+
+## Experiment Results
+Currently, we pushed our experiment result data to the repository. It is located at `result\`
+- Universe 1: Large Cap Universe
+- Universe 2: Range-bounded Universe
+- Universe 3: NASDAQ Top 30 Universe
+- Universe 4: Untility Sector Universe
+- Unvierse 5: High Dividend Universe
+- Universe 6: S&P Top 30 Universe
+- Universe 7: NASDAQ 100 Rolling Universe
+- Universe 8: S&P 500 Rolling Universe
+* For Rolling Universes (Universe 7 & Universe 8), it is required to run different experiment code. Set `-i` option for `experiment.py` and `experiment_ensemble.py`
+* We do not pushed the result Universe 7 and Universe 8 to this repository due to file size limit of the GitHub. We will distribute when requested by email (<dslwde@gmail.com>)
 
 ## Paper
 My paper is at https://arxiv.org/abs/2503.13544 <br>
