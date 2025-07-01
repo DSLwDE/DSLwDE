@@ -3,11 +3,11 @@ import pandas as pd
 
 def aggregate_weights(yearmons, data, all_weights, backtest_start):
     weights = pd.DataFrame(index=yearmons, columns=data['log_tr'].columns).loc[backtest_start:]
-    weights.loc[:, :] = np.stack(all_weights).mean(0)
+    weights.loc[:, :] = np.stack([x.loc[weights.index] for x in all_weights]).mean(0)
     weights = weights.astype(float)
     return weights
 
-def backtest(yearmons, data, weights, backtest_start, trading_cost = 0.004, lagging = 2):
+def backtest(yearmons, data, missing_mask, weights, backtest_start, trading_cost = 0.004, lagging = 2):
     result = pd.DataFrame(0, index = data.loc[backtest_start:].index, columns = ['strategy'])
     prev_strategy_weight = None
     prev_ew_weight = None
@@ -17,16 +17,19 @@ def backtest(yearmons, data, weights, backtest_start, trading_cost = 0.004, lagg
 
         cur_returns = data.shift(-lagging).loc[yearmon, 'log_tr'].fillna(0).apply(np.exp).values
         cur_return_agg = np.prod(cur_returns, axis = 0)
-        cur_available = ~data.loc[yearmon, 'log_tr'].iloc[0].isna().values
+        cur_available = ~missing_mask[yearmon].cpu().numpy()
     
         cur_strategy_returns = cur_returns.copy()
         cur_strategy_weight = weights.loc[yearmon].values
+        cur_strategy_weight[~cur_available] = 0
+        if np.sum(cur_strategy_weight) == 0:
+            cur_strategy_weight[cur_available] = 1 / np.sum(cur_available)
         
         if prev_strategy_weight is None:
             cur_strategy_returns[0] -= trading_cost * cur_strategy_weight
         else:
             cur_strategy_returns[0] -= np.abs(prev_strategy_weight - cur_strategy_weight) * trading_cost
-        
+
         result.loc[yearmon, 'strategy'] = np.log(np.sum(cur_strategy_weight * cur_strategy_returns, axis = 1))
  
         prev_strategy_weight = cur_strategy_weight * cur_return_agg
@@ -34,7 +37,7 @@ def backtest(yearmons, data, weights, backtest_start, trading_cost = 0.004, lagg
 
     return result
 
-def backtest_baseline(yearmons, data, backtest_start, trading_cost = 0.004, lagging = 2):
+def backtest_baseline(yearmons, data, missing_mask, backtest_start, trading_cost = 0.004, lagging = 2):
     result = pd.DataFrame(0, index = data.loc[backtest_start:].index, columns = ['equal_weight', 'value_weight'])
     prev_ew_weight = None
     prev_vw_weight = None
@@ -44,7 +47,7 @@ def backtest_baseline(yearmons, data, backtest_start, trading_cost = 0.004, lagg
     
         cur_returns = data.shift(-lagging).loc[yearmon, 'log_tr'].fillna(0).apply(np.exp).values
         cur_return_agg = np.prod(cur_returns, axis = 0)
-        cur_available = ~data.loc[yearmon, 'log_tr'].iloc[0].isna().values
+        cur_available = ~missing_mask[yearmon].cpu().numpy()
         cur_market_cap = data.loc[yearmon, 'close'].iloc[0] * data.loc[yearmon, 'volume'].iloc[0]
         cur_market_cap = cur_market_cap.fillna(0).values
     
