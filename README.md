@@ -1,6 +1,6 @@
-# Semi-Decision-Focused Learning with Deep Ensemble
+# Decision by Supervised Learning with Deep Ensemble
 
-This repository contains the experiments and code for the paper **"Semi-Decision-Focused Learning with Deep Ensemble."**
+This repository contains the experiments and code for the paper **"Decision by Supervised Learning with Deep Ensemble: A Practical Framework for Robust Portfolio Optimization"**
 
 ## Requirements
 All dependencies are listed in `requirements.txt`. To install them, simply run:
@@ -43,13 +43,5 @@ The notebooks portfolio.ipynb, backtest.ipynb, and ensemble.ipynb contain script
 My paper is at https://arxiv.org/abs/2503.13544 <br>
 Citation: <br>
 ```
-@misc{kim2025semidecisionfocusedlearningdeepensembles,
-      title={Semi-Decision-Focused Learning with Deep Ensembles: A Practical Framework for Robust Portfolio Optimization}, 
-      author={Juhyeong Kim},
-      year={2025},
-      eprint={2503.13544},
-      archivePrefix={arXiv},
-      primaryClass={cs.LG},
-      url={https://arxiv.org/abs/2503.13544}, 
-}
+
 ```
