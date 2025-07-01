@@ -38,3 +38,18 @@ Here, -r 1000 denotes the number of model samples to generate for the ensemble.
 
 ## Analysis
 The notebooks portfolio.ipynb, backtest.ipynb, and ensemble.ipynb contain scripts and visualizations for analyzing the experiment results.
+
+## Paper
+My paper is at https://arxiv.org/abs/2503.13544 <br>
+Citation: <br>
+```
+@misc{kim2025semidecisionfocusedlearningdeepensembles,
+      title={Semi-Decision-Focused Learning with Deep Ensembles: A Practical Framework for Robust Portfolio Optimization}, 
+      author={Juhyeong Kim},
+      year={2025},
+      eprint={2503.13544},
+      archivePrefix={arXiv},
+      primaryClass={cs.LG},
+      url={https://arxiv.org/abs/2503.13544}, 
+}
+```
