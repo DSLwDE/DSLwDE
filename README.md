@@ -53,7 +53,7 @@ Currently, we pushed our experiment result data to the repository. It is located
 - Universe 7: NASDAQ 100 Rolling Universe
 - Universe 8: S&P 500 Rolling Universe
 * For Rolling Universes (Universe 7 & Universe 8), it is required to run different experiment code. Set `-i` option for `experiment.py` and `experiment_ensemble.py`
-* We do not pushed the result Universe 7 and Universe 8 to this repository due to file size limit of the GitHub. We will distribute when requested by email (<dslwde@gmail.com>)
+* We do not push the result Universe 7 and Universe 8 to this repository due to file size limit of the GitHub. We will distribute when requested by email (<dslwde@gmail.com>)
 
 ## Paper
 My paper is at https://arxiv.org/abs/2503.13544 <br>
