@@ -46,9 +46,9 @@ The notebooks portfolio.ipynb, backtest.ipynb, and ensemble.ipynb contain script
 Currently, we pushed our experiment result data to the repository. It is located at `result\`
 - Universe 1: Large Cap Universe
 - Universe 2: Range-bounded Universe
-- Universe 3: NASDAQ Top 30 Universe
+- Universe 3: High Dividend Universe
 - Universe 4: Untility Sector Universe
-- Unvierse 5: High Dividend Universe
+- Unvierse 5: NASDAQ Top 30 Universe
 - Universe 6: S&P Top 30 Universe
 - Universe 7: NASDAQ 100 Rolling Universe
 - Universe 8: S&P 500 Rolling Universe
